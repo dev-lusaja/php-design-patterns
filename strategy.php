@@ -78,7 +78,7 @@ class Warrior implements HeroInterface
 $warrior = new Hero(new Warrior());
 echo $warrior->setAttack('Orc') . PHP_EOL;
 
-$mage = new Hero(new Mage('Troll'));
+$mage = new Hero(new Mage());
 echo $mage->setDefense() . PHP_EOL;
 
 ?>
