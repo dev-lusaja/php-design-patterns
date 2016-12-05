@@ -43,12 +43,12 @@ class Mage implements HeroInterface
 
 	public function Attack($target)
 	{
-		return "The hero attack to: $target";
+		return "The " . $this->type . " attack to: $target";
 	}
 
 	public function Defense()
 	{
-		return "The hero use defense";
+		return "The " . $this->type . " use defense";
 	}
 }
 
@@ -66,17 +66,17 @@ class Warrior implements HeroInterface
 
 	public function Attack($target)
 	{
-		return "The hero attack to: $target";
+		return "The " . $this->type . " attack to: $target";
 	}
 
 	public function Defense()
 	{
-		return "The hero use defense";
+		return "The " . $this->type . " use defense";
 	}
 }
 
 $warrior = new Hero(new Warrior());
-echo $warrior->setAttack('Orc') . PHP_EOL;
+echo $warrior->setAttack('Mage') . PHP_EOL;
 
 $mage = new Hero(new Mage());
 echo $mage->setDefense() . PHP_EOL;
