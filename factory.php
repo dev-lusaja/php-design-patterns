@@ -1,8 +1,9 @@
 <?php 
 
 /**
-* 
+* This pattern uses a class to create new objects
 */
+
 class Party
 {
 	private $factory;

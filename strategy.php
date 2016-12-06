@@ -1,5 +1,10 @@
 <?php 
 
+
+/**
+* This pattern uses an interface to define how to create other classes
+*/
+
 interface HeroInterface
 {
 	public function Attack($target);

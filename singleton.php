@@ -1,9 +1,9 @@
 <?php 
 
-
 /**
-* 
+* his pattern is used when you only need to create a single instance
 */
+
 class HeroFactory
 {
 	public static $instance;
