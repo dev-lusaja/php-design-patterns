@@ -18,17 +18,17 @@ class Hero
 {
 	private $hero;
 
-	public function __construct(HeroInterface $heroInterface)
+	public function setHero(HeroInterface $heroInterface)
 	{
 		$this->hero = $heroInterface;
 	}
 
-	public function setAttack($target)
+	public function Attack($target)
 	{
 		return $this->hero->Attack($target);
 	}
 
-	public function setDefense()
+	public function Defense()
 	{
 		return $this->hero->Defense();
 	}
@@ -80,10 +80,17 @@ class Warrior implements HeroInterface
 	}
 }
 
-$warrior = new Hero(new Warrior());
-echo $warrior->setAttack('Mage') . PHP_EOL;
+$hero = new Hero();
 
-$mage = new Hero(new Mage());
-echo $mage->setDefense() . PHP_EOL;
+$hero->setHero(new Warrior());
+echo $hero->Attack('Mage') . PHP_EOL;
+// The Warrior attack to: Mage
+echo $hero->Defense() . PHP_EOL;
+// The Warrior use defense
 
+$hero->setHero(new Mage());
+echo $hero->Attack('Warrior') . PHP_EOL;
+// The Mage attack to: Warrior
+echo $hero->Defense() . PHP_EOL;
+// The Mage use defense
 ?>
