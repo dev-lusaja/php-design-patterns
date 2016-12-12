@@ -1,8 +1,7 @@
 <?php 
 
-
 /**
-* This pattern uses an interface to define how to create other classes
+* Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm * vary independently from clients that use it.
 */
 
 interface HeroInterface
@@ -11,9 +10,6 @@ interface HeroInterface
 	public function Defense();
 }
 
-/**
-* 
-*/
 class Hero
 {
 	private $hero;
@@ -34,9 +30,6 @@ class Hero
 	}
 }
 
-/**
-* 
-*/
 class Mage implements HeroInterface
 {
 	public $type;
@@ -57,9 +50,6 @@ class Mage implements HeroInterface
 	}
 }
 
-/**
-* 
-*/
 class Warrior implements HeroInterface
 {
 	public $type;

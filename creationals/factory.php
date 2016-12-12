@@ -83,4 +83,34 @@ $party->add_mages(2);
 echo "Members: " . count($party->members) . PHP_EOL;
 var_dump($party);
 
+// Members: 4
+// object(Party)#1 (2) {
+//   ["factory":"Party":private]=>
+//   object(HeroFactory)#2 (0) {
+//   }
+//   ["members"]=>
+//   array(4) {
+//     [0]=>
+//     object(Warrior)#3 (1) {
+//       ["type"]=>
+//       string(7) "Warrior"
+//     }
+//     [1]=>
+//     object(Warrior)#4 (1) {
+//       ["type"]=>
+//       string(7) "Warrior"
+//     }
+//     [2]=>
+//     object(Mage)#5 (1) {
+//       ["type"]=>
+//       string(4) "Mage"
+//     }
+//     [3]=>
+//     object(Mage)#6 (1) {
+//       ["type"]=>
+//       string(4) "Mage"
+//     }
+//   }
+// }
+
 ?>

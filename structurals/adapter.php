@@ -1,14 +1,14 @@
 <?php 
 
+/**
+* Convert the interface of a class into another interface clients expect.
+*/
+
 interface QuestInterface
 {
 	function finish();
 }
 
-
-/**
-* 
-*/
 class Quest implements QuestInterface
 {
 	
@@ -31,9 +31,6 @@ class Quest implements QuestInterface
 	}
 }
 
-/**
-* 
-*/
 class Hero
 {
 	public $level;
@@ -62,10 +59,6 @@ class Hero
 
 }
 
-
-/**
-* 
-*/
 class OldQuest
 {
 	
@@ -84,10 +77,6 @@ class OldQuest
 	}
 }
 
-
-/**
-* 
-*/
 class QuestAdapter implements QuestInterface
 {
 	
@@ -107,16 +96,17 @@ class QuestAdapter implements QuestInterface
 	}
 }
 
-
 $hero = new Hero();
 $quest = new Quest(5);
 $hero->take_quest($quest);
 $hero->finish_quest($quest);
 echo $hero->exp . PHP_EOL;
+// 250
 
 $old_quest = new OldQuest(5);
 $quest_adapter = new QuestAdapter($old_quest, 5	);
 $hero->take_quest($quest_adapter);
 $hero->finish_quest($quest_adapter);
 echo $hero->exp . PHP_EOL;
+// 300
 ?>

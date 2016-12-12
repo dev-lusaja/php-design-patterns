@@ -48,7 +48,6 @@ class HeroFactory
 
 }
 
-
 class Warrior
 {
 	
@@ -58,7 +57,6 @@ class Warrior
 		$this->type = 'Warrior';
 	}
 }
-
 
 class Mage
 {
@@ -77,6 +75,16 @@ $factory2 = HeroFactory::instance();
 $mage = $factory2->create_mage();
 
 var_dump($warrior);
+// Im a Singleton
+// object(Warrior)#2 (1) {
+//   ["type"]=>
+//   string(7) "Warrior"
+// }
+
 var_dump($mage);
+// object(Mage)#3 (1) {
+//   ["type"]=>
+//   string(4) "Mage"
+// }
 
 ?>
