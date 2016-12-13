@@ -35,5 +35,22 @@ NoPlayerCharacter::getNPC('Personal Assistant');
 NoPlayerCharacter::getNPC('Guard');
 
 var_dump(NoPlayerCharacter::currentNPCTypes());
+// array(3) {
+//   ["Merchant"]=>
+//   object(NoPlayerCharacter)#1 (1) {
+//     ["type":"NoPlayerCharacter":private]=>
+//     string(8) "Merchant"
+//   }
+//   ["Personal Assistant"]=>
+//   object(NoPlayerCharacter)#2 (1) {
+//     ["type":"NoPlayerCharacter":private]=>
+//     string(18) "Personal Assistant"
+//   }
+//   ["Guard"]=>
+//   object(NoPlayerCharacter)#3 (1) {
+//     ["type":"NoPlayerCharacter":private]=>
+//     string(5) "Guard"
+//   }
+// }
 
 ?>
