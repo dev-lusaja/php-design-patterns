@@ -22,7 +22,7 @@ class Human implements HeroInterface
 	 * @param string $type
 	 * @param array $skills
 	 */
-	function __construct($type, $skills)
+	public function __construct($type, $skills)
 	{
 		$this->type = $type;
 		$this->skills = $skills;
@@ -58,7 +58,7 @@ class Elf implements HeroInterface
 	 * @param string $type
 	 * @param array $skills
 	 */
-	function __construct($type, $skills)
+	public function __construct($type, $skills)
 	{
 		$this->type = $type;
 		$this->skills = $skills;
