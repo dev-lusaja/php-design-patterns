@@ -1,71 +1,166 @@
 <?php 
 
-/**
-* Separate the construction of a complex object from its representation so that
-* The same construction process can create different representations
-*/
 
-class BoardBuilder
+interface IntenInterface
 {
-	private $board;
+	public function getName(): string;
+	public function getSize(): int;
+	public function getPower(): float; 
+}
 
-	public function __construct($width, $height)
+class Sword implements IntenInterface
+{
+	
+	/**
+	 * @var string $name
+	 */
+	private $name;
+
+
+	/**
+	 * @var string #size
+	 */
+	private $size;
+
+	/**
+	 * @var float $power
+	 */
+	private $power;
+
+	/**
+	 * @param ItemBuilder $builder
+	 */
+	public function __construct(ItemBuilder $builder)
 	{
-		$this->board = new Board();
-		$this->board->width = $width;
-		$this->board->height = $height;
-		$this->board->tiles = array();
-		$this->board->monsters = array();
+		$this->setName($builder->name);
+		$this->setSize($builder->size);
+		$this->setPower($builder->power);
 	}
 
-	public function add_tiles($cant)
+	
+	/**
+	 * @return string
+	 */
+	public function getName(): string
 	{
-		for ($i=0; $i < $cant; $i++) { 
-			array_push($this->board->tiles, new Tile());
-		}
+		return $this->name;
 	}
 
-	public function add_monsters($cant)
+
+	/**
+	 * @return string 
+	 */
+	public function getSize(): int
 	{
-		for ($i=0; $i < $cant; $i++) { 
-			array_push($this->board->monsters, new Monster());
-		}
+		return $this->size;
 	}
 
-	public function Board()
+
+	public function getPower(): float
 	{
-		return $this->board;
+		return $this->power;
+	}
+
+
+    /**
+     * Sets the value of name.
+     *
+     * @param string $name $name the name
+     *
+     * @return self
+     */
+    private function setName(string $name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of size.
+     *
+     * @param int #size $size the size
+     *
+     * @return self
+     */
+    private function setSize(int $size) 
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Sets the value of power.
+     *
+     * @param float $power $power the power
+     *
+     * @return self
+     */
+    private function setPower(float $power)
+    {
+        $this->power = $power;
+
+        return $this;
+    }
+}
+
+
+abstract class ItemBuilder
+{
+	abstract public function build();
+}
+ 
+
+class SwordBuilder extends ItemBuilder
+{
+
+	public $name;
+	public $size;
+	public $power;
+
+	/**
+	 * @param  int $size
+	 * @return self
+	 */
+	public function size(int $size)
+	{
+		$this->size = $size;
+		return $this;
+	}
+
+	/**
+	 * @param string
+	 * @return self
+	 */
+	public function name(string $name)
+	{
+		$this->name = $name;
+		return $this;
+	}
+
+
+	/**
+	 * @param  float $power
+	 * @return self
+	 */
+	public function power(float $power)
+	{
+		$this->power = $power;
+		return $this;
+	}
+
+	/**
+	 * @return ItemInterface
+	 */
+	public function build()
+	{
+		$sword = new Sword($this);
+		return $sword;
 	}
 }
 
-/**
-* 
-*/
-class Board
-{
-	public $width;
-	public $height;
-	public $tiles;
-	public $monsters;
-}
+$sword = (new SwordBuilder())->name('Lusaja')->size(10)->power(20.5)->build();
+var_dump($sword);
 
-class Tile{}
-
-class Monster{}
-
-$builder = new BoardBuilder(2, 3);
-var_dump($builder);
-// object(BoardBuilder)
-
-$board = $builder->board();
-var_dump($board->width);
-// int(2)
-
-$builder->add_tiles(3);
-$builder->add_monsters(2);
-
-var_dump(count($board->tiles));
-// int(3)
-var_dump(count($board->monsters));
-// int(2)
 ?>
