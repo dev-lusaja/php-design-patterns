@@ -2,7 +2,7 @@ Diagrama de Clases
 ==================
 
 
-[logo]: https://github.com/dev-lusaja/php-design-patterns/tree/master/creationals/builder/schema.png "Schema Builder"
+[logo]: https://github.com/dev-lusaja/php-design-patterns/blob/master/creationals/builder/schema.png "Schema Builder"
 
 
 **Builder**
