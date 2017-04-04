@@ -1,20 +1,26 @@
 <?php 
 
 
+/**
+ * PRODUCT INTERFACE
+ */
 interface IntenInterface
 {
-	public function getName(): string;
+	public function getBlade(): string;
 	public function getSize(): int;
-	public function getPower(): float; 
+	public function getPower(): float;
 }
 
+/**
+ * PRODUCT
+ */
 class Sword implements IntenInterface
 {
 	
 	/**
-	 * @var string $name
+	 * @var string $blade
 	 */
-	private $name;
+	private $blade;
 
 
 	/**
@@ -27,12 +33,14 @@ class Sword implements IntenInterface
 	 */
 	private $power;
 
+
+
 	/**
 	 * @param ItemBuilder $builder
 	 */
 	public function __construct(ItemBuilder $builder)
 	{
-		$this->setName($builder->name);
+		$this->setBlade($builder->blade);
 		$this->setSize($builder->size);
 		$this->setPower($builder->power);
 	}
@@ -41,9 +49,9 @@ class Sword implements IntenInterface
 	/**
 	 * @return string
 	 */
-	public function getName(): string
+	public function getBlade(): string
 	{
-		return $this->name;
+		return $this->blade;
 	}
 
 
@@ -63,15 +71,15 @@ class Sword implements IntenInterface
 
 
     /**
-     * Sets the value of name.
+     * Sets the value of blade.
      *
-     * @param string $name $name the name
+     * @param string $blade $blade the blade
      *
      * @return self
      */
-    private function setName(string $name)
+    private function setBlade(string $blade)
     {
-        $this->name = $name;
+        $this->blade = $blade;
 
         return $this;
     }
@@ -105,17 +113,22 @@ class Sword implements IntenInterface
     }
 }
 
-
+/**
+ * BUILDER
+ */
 abstract class ItemBuilder
 {
 	abstract public function build();
 }
- 
 
-class SwordBuilder extends ItemBuilder
+
+/**
+ * CONCRETE BUILDER
+ */
+class SwordConcreteBuilder extends ItemBuilder
 {
 
-	public $name;
+	public $blade;
 	public $size;
 	public $power;
 
@@ -133,9 +146,9 @@ class SwordBuilder extends ItemBuilder
 	 * @param string
 	 * @return self
 	 */
-	public function name(string $name)
+	public function blade(string $blade)
 	{
-		$this->name = $name;
+		$this->blade = $blade;
 		return $this;
 	}
 
@@ -160,7 +173,31 @@ class SwordBuilder extends ItemBuilder
 	}
 }
 
-$sword = (new SwordBuilder())->name('Lusaja')->size(10)->power(20.5)->build();
+
+/**
+* DIRECTOR
+*/
+class ItemDirector
+{
+	
+	/**
+	 * @var ItemBuilder
+	 */
+	public $builder;
+
+	/**
+	 * @param ItemBuilder $builder
+	 */
+	public function __construct($builder)
+	{
+		$this->builder = $builder;
+	}
+}
+
+
+$concreteBuilder = new SwordConcreteBuilder();
+$itemDirector = (new ItemDirector($concreteBuilder));
+$sword = $itemDirector->builder->blade('iron')->size(10)->power(20.5)->build();
 var_dump($sword);
 
 ?>
